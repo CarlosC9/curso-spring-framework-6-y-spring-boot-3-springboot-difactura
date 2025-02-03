@@ -9,19 +9,18 @@ import java.util.List;
 @Component
 public class Invoice {
 
-  @Autowired
   private Client client;
-
+  
   @Value("${invoice.description}")
   private String description;
 
-  @Autowired
   private List<Item> items;
 
   public Client getClient() {
     return client;
   }
 
+  @Autowired
   public void setClient(Client client) {
     this.client = client;
   }
@@ -38,11 +37,19 @@ public class Invoice {
     return items;
   }
 
+  @Autowired
   public void setItems(List<Item> items) {
     this.items = items;
   }
 
   public int getTotal() {
-    return 0;
+//    int total = 0;
+//    for (Item item : this.items) {
+//      total += item.getImport();
+//    }
+//    return total;
+    return items.stream()
+      .map(Item::getImport)
+      .reduce(0, (sum, item) -> sum + item);
   }
 }
