@@ -13,7 +13,7 @@ import java.util.List;
 
 @Component
 @RequestScope
-@JsonIgnoreProperties({"targetSource", "advisors"})
+//@JsonIgnoreProperties({"targetSource", "advisors"})
 public class Invoice {
 
   private Client client;
@@ -44,6 +44,10 @@ public class Invoice {
 
   public String getDescription() {
     return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 
   public List<Item> getItems() {
