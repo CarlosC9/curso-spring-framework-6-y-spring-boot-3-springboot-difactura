@@ -9,34 +9,36 @@ import java.util.List;
 @Component
 public class Invoice {
 
-    @Autowired
-    private Client client;
+  @Autowired
+  private Client client;
 
-    @Value("${invoice.description}")
-    private String description;
-    private List<Item> items;
+  @Value("${invoice.description}")
+  private String description;
 
-    public Client getClient() {
-        return client;
-    }
+  @Autowired
+  private List<Item> items;
 
-    public void setClient(Client client) {
-        this.client = client;
-    }
+  public Client getClient() {
+    return client;
+  }
 
-    public String getDescription() {
-        return description;
-    }
+  public void setClient(Client client) {
+    this.client = client;
+  }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+  public String getDescription() {
+    return description;
+  }
 
-    public List<Item> getItems() {
-        return items;
-    }
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
-    }
+  public List<Item> getItems() {
+    return items;
+  }
+
+  public void setItems(List<Item> items) {
+    this.items = items;
+  }
 }
