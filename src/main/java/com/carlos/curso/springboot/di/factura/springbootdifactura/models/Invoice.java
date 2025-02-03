@@ -1,5 +1,6 @@
 package com.carlos.curso.springboot.di.factura.springbootdifactura.models;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,6 +18,17 @@ public class Invoice {
 
   private List<Item> items;
 
+  @PostConstruct
+  public void init() {
+    System.out.println("Creando componenete de la factura");
+    client.setName(client.getName().concat(" Pepe"));
+    this.description = description
+      .concat(" del cliente: ")
+      .concat(client.getName())
+      .concat(" ")
+      .concat(client.getLastName());
+  }
+
   public Client getClient() {
     return client;
   }
@@ -28,10 +40,6 @@ public class Invoice {
 
   public String getDescription() {
     return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
   }
 
   public List<Item> getItems() {
